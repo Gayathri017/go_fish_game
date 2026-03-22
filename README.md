@@ -17,5 +17,11 @@ A professional-grade, web-based "Go Fish" card game built with **Python (Flask)*
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/YOUR_USERNAME/go-phish.git](https://github.com/YOUR_USERNAME/go-phish.git)
+   git clone https://github.com/Gayathri017/go_fish_game
    cd go-phish
+2. # Install dependencies
+    pip install -r requirements.txt
+3. # Run the game
+    python app.py
+4. # Play
+    Open your browser to http://127.0.0.1:5000. To play on your phone, use your computer's IP address
