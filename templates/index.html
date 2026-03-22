@@ -1,178 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Go Phish | Classic Edition</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <style>
-        :root {
-            --poker-green: #2e7d32;
-            --card-white: #ffffff;
-            --ocean-blue: #0277bd;
-        }
-
-        body {
-            background-color: #1a1a1a;
-            color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        #game-board {
-            width: 95%;
-            max-width: 1000px;
-            height: 80vh;
-            background: var(--poker-green);
-            border: 10px solid #5d4037;
-            border-radius: 50px;
-            margin-top: 20px;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
-        }
-
-        .player-area {
-            padding: 20px;
-            text-align: center;
-        }
-
-        .opponent-hand { transform: rotate(180deg); }
-
-        .hand {
-            display: flex;
-            justify-content: center;
-            gap: -20px; /* Overlap cards */
-            min-height: 120px;
-        }
-
-        .card {
-            width: 70px;
-            height: 100px;
-            background: var(--card-white);
-            color: black;
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 5px;
-            font-weight: bold;
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-            cursor: pointer;
-            transition: transform 0.2s, margin 0.2s;
-            border: 1px solid #ccc;
-            user-select: none;
-        }
-
-        .card:hover {
-            transform: translateY(-20px);
-            z-index: 10;
-        }
-
-        .card.red { color: #d32f2f; }
-
-        .ocean-pile {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 150px;
-            height: 100px;
-            background: var(--ocean-blue);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 3px dashed rgba(255,255,255,0.5);
-        }
-
-        .stats-panel {
-            position: absolute;
-            right: -120px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: #333;
-            padding: 15px;
-            border-radius: 10px;
-        }
-
-        .controls {
-            margin-bottom: 20px;
-        }
-
-        button {
-            padding: 10px 20px;
-            background: #ffd54f;
-            border: none;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-    </style>
+    <title>Go Phish | Gayathri017</title>
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-
-    <h1>GO PHISH <small>(Strict Rules)</small></h1>
-
-    <div id="game-board">
-        <div class="player-area opponent-area">
-            <h3 id="opp-name">Smart AI</h3>
-            <div id="opponent-hand" class="hand opponent-hand">
-                </div>
-        </div>
-
-        <div class="ocean-pile" id="deck" onclick="goFish()">
-            <span>THE OCEAN</span>
-        </div>
-
-        <div class="player-area">
-            <div id="player-hand" class="hand">
-                </div>
-            <h3 id="player-name">Your Hand</h3>
-            <div class="controls">
-                <button onclick="askForCard()">Ask for Card</button>
-            </div>
-        </div>
-
-        <div class="stats-panel">
-            <h4>Books</h4>
-            <div id="books-count">You: 0 | AI: 0</div>
+    <div id="setup-screen" class="container">
+        <h1>GO PHISH</h1>
+        <div class="menu">
+            <button onclick="initGame('solo')">Solo vs AI</button>
             <hr>
-            <div id="game-log" style="font-size: 0.8em; max-height: 100px; overflow-y: auto;">
-                Welcome to the game!
-            </div>
+            <input type="text" id="room-name" placeholder="Enter Room Name">
+            <button onclick="initGame('family')">Join Family Room</button>
         </div>
     </div>
 
-    <script>
-        // Placeholder for game state
-        let selectedRank = null;
+    <div id="game-screen" style="display:none;">
+        <div class="stats">Books - You: <span id="p-books">0</span> | AI: <span id="a-books">0</span></div>
+        <div id="opponent-area" class="hand"></div>
+        <div id="ocean">OCEAN (<span id="deck-size">0</span>)</div>
+        <div id="player-area" class="hand"></div>
+        <div class="controls">
+            <p id="status-msg">Select a card to ask!</p>
+            <button id="ask-btn" onclick="performAsk()" disabled>Ask Opponent</button>
+        </div>
+    </div>
 
-        function selectCard(rank) {
-            selectedRank = rank;
-            console.log("Selected to ask for: " + rank);
-            // Visual feedback
-            document.querySelectorAll('.card').forEach(c => c.style.border = "1px solid #ccc");
-            event.currentTarget.style.border = "3px solid #ffd54f";
-        }
-
-        async function askForCard() {
-            if (!selectedRank) {
-                alert("Pick a card from your hand first!");
-                return;
-            }
-            // This would fetch from your Flask /ask route
-            console.log("Requesting " + selectedRank + " from AI...");
-        }
-
-        // Logic to draw cards on screen would go here
-    </script>
+    <script src="/static/js/game.js"></script>
 </body>
 </html>

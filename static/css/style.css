@@ -1,21 +1,14 @@
-.card {
-    width: 80px;
-    height: 120px;
-    border-radius: 8px;
-    background: white;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-    display: inline-block;
-    transition: transform 0.2s;
-    cursor: pointer;
+body { background: #1a472a; color: white; font-family: sans-serif; text-align: center; }
+.container { margin-top: 100px; }
+.hand { display: flex; justify-content: center; gap: 10px; margin: 20px; min-height: 110px; }
+.card { 
+    width: 70px; height: 100px; background: white; color: black; 
+    border-radius: 5px; display: flex; flex-direction: column; 
+    justify-content: center; cursor: pointer; border: 2px solid #333;
 }
-
-.card:hover {
-    transform: translateY(-20px); /* Card pops up when you hover */
+.card.back { background: #b00; border: 2px solid white; }
+#ocean { 
+    width: 120px; height: 80px; border: 2px dashed white; 
+    margin: 20px auto; line-height: 80px; border-radius: 50%;
 }
-
-.ocean {
-    height: 200px;
-    background: rgba(0, 100, 255, 0.1);
-    border-radius: 50%;
-    margin: 20px;
-}
+button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
