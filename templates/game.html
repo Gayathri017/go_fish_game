@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Go Fish</title>
+</head>
+<body>
+    <h1>Go Fish Game</h1>
+    <h2>Player: {{ player_name }}</h2>
+
+    <h3>Your Hand:</h3>
+    <ul>
+    {% for card in game.players[0].hand %}
+        <li>{{ card.rank }} of {{ card.suit }}</li>
+    {% endfor %}
+    </ul>
+
+    <h3>Books Collected:</h3>
+    <ul>
+    {% for book in game.players[0].books %}
+        <li>{{ book }}</li>
+    {% endfor %}
+    </ul>
+
+    <p>AI Players:</p>
+    <ul>
+    {% for p in game.players[1:] %}
+        <li>{{ p.name }} - Books: {{ p.books|length }}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
