@@ -1,14 +1,43 @@
-body { background: #1a472a; color: white; font-family: sans-serif; text-align: center; }
-.container { margin-top: 100px; }
-.hand { display: flex; justify-content: center; gap: 10px; margin: 20px; min-height: 110px; }
+body { background: #1a472a; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; overflow-x: hidden; }
+.container { text-align: center; padding: 50px; }
+.menu-box { background: rgba(0,0,0,0.3); padding: 30px; border-radius: 15px; display: inline-block; }
+input { padding: 10px; margin: 5px; border-radius: 5px; border: none; width: 200px; }
+
+/* Table Layout */
+.header-stats { display: flex; justify-content: space-around; background: #0e301a; padding: 15px; font-weight: bold; border-bottom: 2px solid #ffd700; }
+#turn-indicator { color: #ffd700; text-transform: uppercase; }
+
+#opponents-container { display: flex; justify-content: center; gap: 20px; padding: 20px; flex-wrap: wrap; }
+.opponent-slot { background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px; text-align: center; min-width: 100px; }
+
+.hand { display: flex; justify-content: center; gap: 10px; margin: 20px; min-height: 120px; flex-wrap: wrap; }
 .card { 
-    width: 70px; height: 100px; background: white; color: black; 
-    border-radius: 5px; display: flex; flex-direction: column; 
-    justify-content: center; cursor: pointer; border: 2px solid #333;
+    width: 60px; height: 90px; background: white; color: black; border-radius: 8px;
+    display: flex; flex-direction: column; justify-content: center; cursor: pointer;
+    font-weight: bold; font-size: 1.2rem; border: 3px solid transparent; transition: 0.2s;
 }
-.card.back { background: #b00; border: 2px solid white; }
-#ocean { 
-    width: 120px; height: 80px; border: 2px dashed white; 
-    margin: 20px auto; line-height: 80px; border-radius: 50%;
+.card:hover { transform: translateY(-10px); }
+.card.back { background: #b00; border: 2px solid white; color: transparent; }
+
+.controls { margin-top: 20px; background: rgba(0,0,0,0.2); padding: 20px; }
+select, button { padding: 10px 20px; font-size: 1rem; border-radius: 5px; cursor: pointer; }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
 }
-button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+
+#ask-btn {
+    background: #ffd700;
+    color: #1a472a;
+    font-weight: bold;
+    border: none;
+    transition: 0.3s;
+}
+
+#ask-btn:hover:not(:disabled) {
+    background: white;
+    transform: scale(1.1);
+}

@@ -6,26 +6,36 @@
 </head>
 <body>
     <div id="setup-screen" class="container">
-        <h1>GO PHISH</h1>
-        <div class="menu">
-            <button onclick="initGame('solo')">Solo vs AI</button>
-            <hr>
-            <input type="text" id="room-name" placeholder="Enter Room Name">
-            <button onclick="initGame('family')">Join Family Room</button>
+        <h1>🐟 GO PHISH</h1>
+        <div class="menu-box">
+            <button onclick="startSolo()">SOLO VS AI</button>
+            <hr><p>OR MULTIPLAYER</p>
+            <input type="text" id="username" placeholder="Your Name">
+            <input type="text" id="room-id" placeholder="Room Name">
+            <button onclick="joinGame()">JOIN FAMILY ROOM</button>
         </div>
+    </div>
+
+    <div id="waiting-screen" class="container" style="display:none;">
+        <h2>Room: <span id="display-room"></span></h2>
+        <ul id="waiting-list-ul"></ul>
+        <button id="start-btn" onclick="triggerStart()">START GAME</button>
     </div>
 
     <div id="game-screen" style="display:none;">
-        <div class="stats">Books - You: <span id="p-books">0</span> | AI: <span id="a-books">0</span></div>
-        <div id="opponent-area" class="hand"></div>
-        <div id="ocean">OCEAN (<span id="deck-size">0</span>)</div>
+        <div class="header-stats">
+            <div>Deck: <span id="deck-size">0</span></div>
+            <div id="turn-indicator">Waiting...</div>
+            <div>Books: <span id="p-books">0</span></div>
+        </div>
+        <div id="opponents-container"></div>
+        <div class="status-bubble"><p id="status-msg">Select a card!</p></div>
         <div id="player-area" class="hand"></div>
         <div class="controls">
-            <p id="status-msg">Select a card to ask!</p>
-            <button id="ask-btn" onclick="performAsk()" disabled>Ask Opponent</button>
+            <select id="target-player-select"></select>
+            <button id="ask-btn" onclick="performAsk()" disabled>ASK</button>
         </div>
     </div>
-
     <script src="/static/js/game.js"></script>
 </body>
 </html>
