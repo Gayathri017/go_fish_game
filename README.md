@@ -9,7 +9,7 @@ A professional-grade, web-based "Go Fish" card game built with **Python (Flask)*
 - **Local Multiplayer**: Host on your PC and play with family on the same Wi-Fi.
 
 ## 🛠️ Tech Stack
-- **Backend**: Python 3.x, Flask
+- **Backend**: Python 3.13.0, Flask
 - **Frontend**: HTML5, CSS3 (Flexbox/Grid), JavaScript (ES6)
 - **Deployment**: Localhost / PythonAnywhere
 
